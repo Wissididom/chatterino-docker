@@ -25,8 +25,6 @@ jobs:
         include:
           # The Dockerfile file name will be inferred from the image-name parameter
           # If the image-name is chatterino2-xd, the Dockerfile it will look for is Dockerfile_chatterino2-xd
-          - os: ubuntu-20.04
-            image-name: chatterino2-build-ubuntu-20.04
           - os: ubuntu-22.04
             image-name: chatterino2-build-ubuntu-22.04
           - os: ubuntu-24.04
@@ -37,6 +35,21 @@ jobs:
       IMAGE_NAME: "chatterino/${{ matrix.image-name }}"
 
     steps:
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: false
+          
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
       - uses: actions/checkout@v4
         with:
           repository: "Chatterino/chatterino2"
