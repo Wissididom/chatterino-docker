@@ -50,11 +50,11 @@ jobs:
           large-packages: true
           docker-images: true
           swap-storage: true
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           repository: "Chatterino/chatterino2"
           submodules: recursive
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           path: "chatterino-docker"
 
@@ -115,7 +115,7 @@ jobs:
       IMAGE_NAME: "chatterino/${{ matrix.image-name }}"
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           path: "chatterino-docker"
 
