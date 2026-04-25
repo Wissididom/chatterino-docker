@@ -150,6 +150,11 @@ apt-get install -y --no-install-recommends \
     libxkbcommon-x11-dev \
     libfontconfig1-dev
 
+# Temporarily downgrade to GCC 13
+apt-get install gcc-13 g++-13
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 100
+update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 100
+
 apt-get clean
 EOF
 
