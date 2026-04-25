@@ -181,7 +181,6 @@ set -e
 
 cd /tmp/qt/qt5
 
-echo "Before configure"
 ./configure \
     -static \
     -prefix /usr/local-qt \
@@ -200,11 +199,8 @@ echo "Before configure"
     -nomake examples \
     -nomake tests
 
-echo "After configure"
 cmake --build .
-echo "After build"
 cmake --install .
-echo "After install"
 EOF
 
 
